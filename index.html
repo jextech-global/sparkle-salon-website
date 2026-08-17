@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparkle Salon | Beauty Salon in Moore, Idaho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b8860b;
+            --primary-light: #d4a843;
+            --primary-dark: #8b6508;
+            --bg-cream: #faf8f5;
+            --bg-white: #ffffff;
+            --text-dark: #2d2d2d;
+            --text-medium: #5a5a5a;
+            --text-light: #8a8a8a;
+            --border: #e8e4df;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --gold-gradient: linear-gradient(135deg, #b8860b 0%, #d4a843 50%, #b8860b 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .nav-logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .nav-logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 4px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(184, 134, 11, 0.06);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            background: rgba(184, 134, 11, 0.08);
+        }
+
+        .nav-cta {
+            background: var(--gold-gradient) !important;
+            color: white !important;
+            font-weight: 600 !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(184, 134, 11, 0.3) !important;
+            background: var(--gold-gradient) !important;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* ===== PAGES ===== */
+        .page {
+            display: none;
+            padding-top: 72px;
+            min-height: 100vh;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* ===== HOME PAGE ===== */
+        .hero {
+            position: relative;
+            height: 85vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlAKpAh2oLXC22r49-b-T_PRc9OJEJ9BVSohccfH7CX8iG7k9IDZrDx1kL7Y60_HyzYs5qQ7AQUhz9w5gObgHrlbIjQNjyOSyPRGyRm9LYvtIi8s5WhrEgFlhWtvTbaDEX4pE4_fQ=w1920-h1080-k-no') center/cover no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.75) 0%, rgba(45, 45, 45, 0.5) 50%, rgba(184, 134, 11, 0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-badge .stars {
+            color: #ffd700;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--gold-gradient);
+            color: white;
+            box-shadow: 0 4px 20px rgba(184, 134, 11, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(184, 134, 11, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gold-gradient);
+            border-radius: 2px;
+            margin: 1rem auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(184, 134, 11, 0.08);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.75rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Photo Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 16/10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:first-child {
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        /* Quick Review Cards */
+        .reviews-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .review-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .review-stars {
+            color: #ffd700;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .review-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .review-date {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: var(--gold-gradient);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-banner h2 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-dark);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        /* Info Bar */
+        .info-bar {
+            background: var(--bg-white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem;
+        }
+
+        .info-bar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-item .icon {
+            font-size: 1.5rem;
+        }
+
+        .info-item .label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .info-item .value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* ===== ABOUT PAGE ===== */
+        .about-hero {
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-hero p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about-story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-story img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .about-story-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .about-story-text p {
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .value-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        .amenities-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+            max-width: 500px;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(184, 134, 11, 0.05);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        .amenity-item .check {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* ===== REVIEWS PAGE ===== */
+        .reviews-hero {
+            padding: 6rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .reviews-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-big {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 1.5rem 0;
+        }
+
+        .rating-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+
+        .rating-details {
+            text-align: left;
+        }
+
+        .rating-stars {
+            color: #ffd700;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+        }
+
+        .rating-count {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .review-bars {
+            max-width: 300px;
+            margin: 2rem auto;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .bar-label {
+            font-size: 0.8rem;
+            color: var(--text-medium);
+            width: 12px;
+        }
+
+        .bar-track {
+            flex: 1;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: #ffd700;
+            border-radius: 4px;
+        }
+
+        .reviews-list {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        .review-full {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .review-full:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .review-full-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 1rem;
+        }
+
+        .review-full-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .review-full-meta {
+            flex: 1;
+        }
+
+        .review-full-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .review-full-info {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        .review-full-stars {
+            color: #ffd700;
+            letter-spacing: 2px;
+        }
+
+        .review-full-text {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+
+        /* ===== BOOK APPOINTMENT PAGE ===== */
+        .booking-hero {
+            padding: 6rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .booking-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .booking-hero p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .booking-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+        }
+
+        .booking-form {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .booking-form h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .booking-form .btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 0.5rem;
+            padding: 16px;
+        }
+
+        .booking-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .booking-info-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .booking-info-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .time-slot {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--bg-cream);
+        }
+
+        .time-slot:hover {
+            border-color: var(--primary);
+            background: rgba(184, 134, 11, 0.05);
+        }
+
+        .time-slot.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .notice-card {
+            background: rgba(184, 134, 11, 0.06);
+            border: 1px solid rgba(184, 134, 11, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+        }
+
+        .notice-card p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        .notice-card strong {
+            color: var(--primary-dark);
+        }
+
+        /* ===== CONTACT PAGE ===== */
+        .contact-hero {
+            padding: 6rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-hero p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(184, 134, 11, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-card p {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .contact-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .map-embed {
+            margin-top: 2rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .map-embed iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--text-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-brand h3 span {
+            color: var(--primary-light);
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .footer h4 {
+            color: white;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-story {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-item:first-child {
+                grid-row: span 1;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .info-bar-inner {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== SUCCESS MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            text-align: center;
+            max-width: 420px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* ===== REVIEW TICKER ===== */
+        .review-ticker-section {
+            padding: 4rem 0 0;
+            overflow: hidden;
+        }
+
+        .review-ticker-section .section-header {
+            padding: 0 2rem;
+        }
+
+        .review-ticker-track {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1rem 2rem 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .review-ticker-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .review-ticker-card {
+            flex: 0 0 360px;
+            scroll-snap-align: start;
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .review-ticker-card:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--primary-light);
+        }
+
+        .review-ticker-card .review-stars {
+            margin-bottom: 0.5rem;
+        }
+
+        .review-ticker-card .review-text {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== LEAVE A REVIEW PAGE ===== */
+        .leave-review-hero {
+            padding: 6rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .leave-review-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .leave-review-hero p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .leave-review-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        .leave-review-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .leave-review-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .star-rating-input {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1.25rem;
+        }
+
+        .star-rating-input .star-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s, transform 0.2s;
+            padding: 0;
+        }
+
+        .star-rating-input .star-btn.active,
+        .star-rating-input .star-btn:hover {
+            color: #ffd700;
+            transform: scale(1.15);
+        }
+
+        .google-review-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
+            padding: 1.25rem 2rem;
+            background: var(--bg-cream);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .google-review-link:hover {
+            background: rgba(184, 134, 11, 0.06);
+            border-color: var(--primary-light);
+        }
+
+        .google-review-link .g-icon {
+            font-size: 1.3rem;
+        }
+
+        /* ===== PRIVACY POLICY PAGE ===== */
+        .privacy-hero {
+            padding: 6rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .privacy-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .privacy-hero p {
+            color: var(--text-medium);
+            font-size: 1rem;
+        }
+
+        .privacy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        .privacy-content h2 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .privacy-content p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-content ul {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .privacy-content ul li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a class="nav-logo" href="#" onclick="showPage('home'); return false;">
+                <div class="nav-logo-icon">S</div>
+                <div class="nav-logo-text">Sparkle <span>Salon</span></div>
+            </a>
+            <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a onclick="showPage('home')" class="active" data-page="home">Home</a></li>
+                <li><a onclick="showPage('about')" data-page="about">About</a></li>
+                <li><a onclick="showPage('reviews')" data-page="reviews">Leave a Review</a></li>
+                <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+                <li><a onclick="showPage('booking')" data-page="booking" class="nav-cta">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div class="page active" id="page-home">
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content animate-in">
+                <div class="hero-badge">
+                    <span class="stars">★★★★★</span> 5.0 Rating · 20 Reviews
+                </div>
+                <h1>Your Beauty, Our Passion</h1>
+                <p>Nails, waxing, color, permanent makeup and more! Experience big city amenities right here in Moore, Idaho.</p>
+                <div class="hero-buttons">
+                    <a class="btn btn-primary" onclick="showPage('booking')">Book Appointment</a>
+                    <a class="btn btn-secondary" onclick="showPage('about')">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Bar -->
+        <div class="info-bar">
+            <div class="info-bar-inner">
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <span class="label">Location</span>
+                    <span class="value">3162 3350 W, Moore, ID 83255</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">📞</span>
+                    <span class="label">Call Us</span>
+                    <span class="value">(208) 554-2074</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">⏰</span>
+                    <span class="label">By Appointment</span>
+                    <span class="value">Appointments Recommended</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Services</h2>
+                    <div class="section-divider"></div>
+                    <p>From nails to permanent makeup, we offer a full range of beauty services to keep you looking and feeling your best.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💅</div>
+                        <h3>Nail Services</h3>
+                        <p>Manicures, pedicures, acrylics, gel nails, nail art, and more. Beautiful nails crafted with precision.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">✨</div>
+                        <h3>Permanent Makeup</h3>
+                        <p>Microblading, permanent eyeliner, lip color and more. Wake up beautiful every single day.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>Hair Color</h3>
+                        <p>Full color, highlights, balayage, and corrective color. Transform your look with vibrant, lasting color.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🧴</div>
+                        <h3>Waxing</h3>
+                        <p>Professional waxing services for smooth, silky skin. Gentle techniques for maximum comfort.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="section" style="background: var(--bg-white);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Salon</h2>
+                    <div class="section-divider"></div>
+                    <p>Take a peek inside our welcoming salon space.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlAKpAh2oLXC22r49-b-T_PRc9OJEJ9BVSohccfH7CX8iG7k9IDZrDx1kL7Y60_HyzYs5qQ7AQUhz9w5gObgHrlbIjQNjyOSyPRGyRm9LYvtIi8s5WhrEgFlhWtvTbaDEX4pE4_fQ=w800-h600-k-no" alt="Sparkle Salon Interior">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnCk1QbcedUp4e_ZHES6sLn8EA4j7EU_vMQvUVD3GmTiYExfoTd1nEtC2uJRJgTf-jpy75Ism2420fl5s4Egy7WA3Ufb3uc4VgZm316Yh-mz-xNLl1y8ktLgmaTIWs_n8sdxUaN=w800-h600-k-no" alt="Sparkle Salon Services">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=pdN2Obahb72ezgsci4u6FA&cb_client=maps_sv.tactile.gps&w=800&h=600&yaw=95.8167&pitch=0&thumbfov=100" alt="Sparkle Salon Exterior">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Ticker -->
+        <section class="review-ticker-section">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <div class="section-divider"></div>
+                <p>Don't just take our word for it — hear from our amazing clients!</p>
+            </div>
+            <div class="review-ticker-track" id="reviewTicker">
+                <div class="review-ticker-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Wonderful full service salon. These girls do a wonderful job. Big city amenities without having to go to the big city. Nails, waxing, color, permanent makeup and more!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">RC</div>
+                        <div>
+                            <div class="review-name">Rebecca Calderwood</div>
+                            <div class="review-date">Local Guide · 8 years ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-ticker-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Belle is Excellent at helping me feel good about myself! And the Hempz body wash is the bomb!! Lots of great products to choose from."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">SJ</div>
+                        <div>
+                            <div class="review-name">Shouanna Johnson</div>
+                            <div class="review-date">Local Guide · 3 years ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-ticker-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Love my new nails done by Kendra! Very professional and friendly."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">CH</div>
+                        <div>
+                            <div class="review-name">Corinna Henry</div>
+                            <div class="review-date">13 reviews</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-ticker-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"I absolutely love Kricket....can't wait for Monday...."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">JH</div>
+                        <div>
+                            <div class="review-name">Jody Harrington</div>
+                            <div class="review-date">10 reviews</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-ticker-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Friendly, great experience. Wonderful bunch of ladies."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">HE</div>
+                        <div>
+                            <div class="review-name">Heather Edwards</div>
+                            <div class="review-date">Local Guide · 2 years ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-ticker-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"My nails are beautiful!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">JG</div>
+                        <div>
+                            <div class="review-name">Jonnie Gardner</div>
+                            <div class="review-date">3 reviews</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-ticker-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Perfect place for pampering!!!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">TM</div>
+                        <div>
+                            <div class="review-name">Tammy Maynard</div>
+                            <div class="review-date">Local Guide · 35 reviews</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <div class="cta-banner">
+            <h2>Ready to Sparkle?</h2>
+            <p>Book your appointment today and experience the best beauty services in Moore, Idaho.</p>
+            <a class="btn btn-white" onclick="showPage('booking')">Book Your Appointment</a>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div class="page" id="page-about">
+        <section class="about-hero">
+            <h1>About Sparkle Salon</h1>
+            <div class="section-divider"></div>
+            <p>Your trusted beauty destination in the heart of Moore, Idaho — where every client is family.</p>
+        </section>
+
+        <div class="about-content">
+            <div class="about-story">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlAKpAh2oLXC22r49-b-T_PRc9OJEJ9BVSohccfH7CX8iG7k9IDZrDx1kL7Y60_HyzYs5qQ7AQUhz9w5gObgHrlbIjQNjyOSyPRGyRm9LYvtIi8s5WhrEgFlhWtvTbaDEX4pE4_fQ=w800-h600-k-no" alt="Sparkle Salon">
+                <div class="about-story-text">
+                    <h3>Our Story</h3>
+                    <p>Sparkle Salon is a full-service beauty salon located in Moore, Idaho. We believe that everyone deserves access to top-quality beauty services without having to travel to the big city.</p>
+                    <p>Our talented team of stylists and beauty professionals — including the beloved Belle and Kricket — are dedicated to helping you look and feel your absolute best. From nails and waxing to hair color and permanent makeup, we offer a complete range of services.</p>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 3rem;">
+                <h2>Why Choose Us</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="icon">⭐</div>
+                    <h4>5-Star Rated</h4>
+                    <p>Consistently rated 5.0 stars by our happy clients. Your satisfaction is our top priority.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">💄</div>
+                    <h4>Full Service</h4>
+                    <p>Nails, waxing, color, permanent makeup and more — all under one roof.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🤝</div>
+                    <h4>Friendly & Professional</h4>
+                    <p>Our wonderful team of ladies make every visit a warm and welcoming experience.</p>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 3rem;">
+                <h2>Amenities & Accessibility</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="amenities-list" style="margin: 2rem auto; max-width: 600px;">
+                <div class="amenity-item"><span class="check">✓</span> Wheelchair Accessible Entrance</div>
+                <div class="amenity-item"><span class="check">✓</span> Wheelchair Accessible Parking</div>
+                <div class="amenity-item"><span class="check">✓</span> Wheelchair Accessible Restroom</div>
+                <div class="amenity-item"><span class="check">✓</span> Restroom Available</div>
+                <div class="amenity-item"><span class="check">✓</span> Credit & Debit Cards</div>
+                <div class="amenity-item"><span class="check">✓</span> NFC Mobile Payments</div>
+            </div>
+        </div>
+
+        <div class="cta-banner">
+            <h2>Come Visit Us</h2>
+            <p>We'd love to welcome you to our salon family.</p>
+            <a class="btn btn-white" onclick="showPage('booking')">Book Your Appointment</a>
+        </div>
+    </div>
+
+    <!-- LEAVE A REVIEW PAGE -->
+    <div class="page" id="page-reviews">
+        <section class="leave-review-hero">
+            <h1>Leave a Review</h1>
+            <div class="section-divider"></div>
+            <p>We'd love to hear about your experience! Share your feedback or leave us a review on Google.</p>
+        </section>
+
+        <div class="leave-review-container">
+            <!-- Leave a Review Form -->
+            <div class="leave-review-card">
+                <h3>Share Your Experience</h3>
+                <form onsubmit="submitReview(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="you@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Rating</label>
+                        <div class="star-rating-input" id="starRating">
+                            <button type="button" class="star-btn" data-star="1">★</button>
+                            <button type="button" class="star-btn" data-star="2">★</button>
+                            <button type="button" class="star-btn" data-star="3">★</button>
+                            <button type="button" class="star-btn" data-star="4">★</button>
+                            <button type="button" class="star-btn" data-star="5">★</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Review</label>
+                        <textarea placeholder="Tell us about your experience at Sparkle Salon..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Submit Review</button>
+                </form>
+
+                <a href="https://search.google.com/local/writereview?placeid=ChIJN4g_b22kXz4RqEJrP_4K1YQ" target="_blank" class="google-review-link">
+                    <span class="g-icon">⭐</span>
+                    Or leave a review directly on Google
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOK APPOINTMENT PAGE -->
+    <div class="page" id="page-booking">
+        <section class="booking-hero">
+            <h1>Book Your Appointment</h1>
+            <div class="section-divider"></div>
+            <p>Appointments recommended. Fill out the form below and we'll confirm your booking!</p>
+        </section>
+
+        <div class="booking-container">
+            <div class="booking-form">
+                <h3>Appointment Details</h3>
+                <form id="bookingForm" onsubmit="submitBooking(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" placeholder="Your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" placeholder="Your last name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="(208) 555-0000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="you@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Service</label>
+                        <select required>
+                            <option value="">Select a service...</option>
+                            <option value="nails">Nail Services (Manicure / Pedicure / Acrylics)</option>
+                            <option value="waxing">Waxing Services</option>
+                            <option value="color">Hair Color</option>
+                            <option value="permanent-makeup">Permanent Makeup</option>
+                            <option value="other">Other / Not Sure</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Preferred Date</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Time</label>
+                            <select required>
+                                <option value="">Select time...</option>
+                                <option value="9:00">9:00 AM</option>
+                                <option value="9:30">9:30 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="10:30">10:30 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="12:30">12:30 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="13:30">1:30 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="14:30">2:30 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="15:30">3:30 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                                <option value="16:30">4:30 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Special Requests</label>
+                        <textarea placeholder="Any special requests or notes for your appointment..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Request Appointment</button>
+                </form>
+            </div>
+
+            <div class="booking-sidebar">
+                <div class="booking-info-card">
+                    <h4>📍 Location</h4>
+                    <p style="color: var(--text-medium); font-size: 0.9rem; line-height: 1.7;">
+                        3162 3350 W<br>
+                        Moore, ID 83255
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <a href="tel:+12085542074" class="btn btn-outline" style="display: inline-flex; padding: 10px 20px; font-size: 0.85rem; text-decoration: none;">📞 Call (208) 554-2074</a>
+                    </p>
+                </div>
+
+                <div class="booking-info-card">
+                    <h4>💳 Accepted Payments</h4>
+                    <p style="color: var(--text-medium); font-size: 0.9rem;">
+                        Credit Cards · Debit Cards · NFC Mobile Payments
+                    </p>
+                </div>
+
+                <div class="notice-card">
+                    <p><strong>📋 Please Note:</strong> Appointment required. We recommend booking in advance to ensure availability. Walk-ins may be accommodated based on scheduling.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div class="page" id="page-contact">
+        <section class="contact-hero">
+            <h1>Contact Us</h1>
+            <div class="section-divider"></div>
+            <p>We'd love to hear from you! Reach out with any questions or to book your visit.</p>
+        </section>
+
+        <div class="contact-container">
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-card-icon">📞</div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p><a href="tel:+12085542074">(208) 554-2074</a></p>
+                        <p style="font-size: 0.8rem; margin-top: 4px;">Call us to schedule or ask questions</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon">📍</div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>3162 3350 W<br>Moore, ID 83255</p>
+                        <p style="font-size: 0.8rem; margin-top: 4px;">PJMM+RJ Moore, Idaho</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon">♿</div>
+                    <div>
+                        <h4>Accessibility</h4>
+                        <p>Wheelchair accessible entrance, parking lot, and restroom</p>
+                    </div>
+                </div>
+
+                <div class="map-embed">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2867.2!2d-113.3659!3d43.7345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5355fddb7d0c24e1%3A0xb437dd222dc7923!2sSparkle%20Salon!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form onsubmit="submitContact(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" placeholder="(208) 555-0000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="you@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select>
+                            <option value="">Select a topic...</option>
+                            <option>General Inquiry</option>
+                            <option>Appointment Question</option>
+                            <option>Service Information</option>
+                            <option>Feedback</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="How can we help you?" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY POLICY PAGE -->
+    <div class="page" id="page-privacy">
+        <section class="privacy-hero">
+            <h1>Privacy Policy</h1>
+            <div class="section-divider"></div>
+            <p>Last updated: August 17, 2026</p>
+        </section>
+
+        <div class="privacy-content">
+            <h2>1. Information We Collect</h2>
+            <p>When you visit our website, book an appointment, or contact us, we may collect the following personal information:</p>
+            <ul>
+                <li>Name and contact details (phone number, email address)</li>
+                <li>Appointment preferences and service selections</li>
+                <li>Any additional information you provide in forms or messages</li>
+            </ul>
+
+            <h2>2. How We Use Your Information</h2>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Schedule and manage your appointments</li>
+                <li>Respond to your inquiries and requests</li>
+                <li>Send appointment confirmations and reminders</li>
+                <li>Improve our services and customer experience</li>
+            </ul>
+
+            <h2>3. Information Sharing</h2>
+            <p>We do not sell, trade, or rent your personal information to third parties. Your information is only used internally to provide you with the best possible service at Sparkle Salon.</p>
+
+            <h2>4. Data Security</h2>
+            <p>We implement appropriate security measures to protect your personal information. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+
+            <h2>5. Cookies and Tracking</h2>
+            <p>Our website may use basic cookies to improve your browsing experience. These cookies do not collect personal information and are used solely for website functionality.</p>
+
+            <h2>6. Third-Party Services</h2>
+            <p>Our website may contain links to third-party services such as Google Maps. These services have their own privacy policies, and we encourage you to review them.</p>
+
+            <h2>7. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Request access to your personal information</li>
+                <li>Request correction of inaccurate information</li>
+                <li>Request deletion of your personal information</li>
+                <li>Opt out of any communications from us</li>
+            </ul>
+
+            <h2>8. Children's Privacy</h2>
+            <p>Our services are not directed to individuals under the age of 13. We do not knowingly collect personal information from children under 13.</p>
+
+            <h2>9. Changes to This Policy</h2>
+            <p>We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date.</p>
+
+            <h2>10. Contact Us</h2>
+            <p>If you have any questions about this privacy policy, please contact us:</p>
+            <ul>
+                <li>Phone: <a href="tel:+12085542074" style="color: var(--primary);">(208) 554-2074</a></li>
+                <li>Address: 3162 3350 W, Moore, ID 83255</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>Sparkle <span>Salon</span></h3>
+                <p>Your trusted beauty destination in Moore, Idaho. Nails, waxing, color, permanent makeup and more!</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a onclick="showPage('home')">Home</a></li>
+                    <li><a onclick="showPage('about')">About Us</a></li>
+                    <li><a onclick="showPage('reviews')">Leave a Review</a></li>
+                    <li><a onclick="showPage('booking')">Book Appointment</a></li>
+                    <li><a onclick="showPage('contact')">Contact</a></li>
+                    <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <ul class="footer-links">
+                    <li>📍 3162 3350 W, Moore, ID 83255</li>
+                    <li>📞 (208) 554-2074</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sparkle Salon. All rights reserved. | Sample Website</p>
+        </div>
+    </footer>
+
+    <!-- SUCCESS MODAL -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="icon">✅</div>
+            <h3>Thank You!</h3>
+            <p id="modalMessage">Your request has been received. We'll confirm your appointment shortly!</p>
+            <button class="btn btn-primary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + page).classList.add('active');
+
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            const navLink = document.querySelector(`.nav-links a[data-page="${page}"]`);
+            if (navLink) navLink.classList.add('active');
+
+            // Close mobile menu
+            document.querySelector('.nav-links').classList.remove('open');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Form submissions
+        function submitBooking(e) {
+            e.preventDefault();
+            document.getElementById('modalMessage').textContent = 'Your appointment request has been received! We\'ll call you at the number provided to confirm your booking.';
+            document.getElementById('successModal').classList.add('show');
+        }
+
+        function submitContact(e) {
+            e.preventDefault();
+            document.getElementById('modalMessage').textContent = 'Your message has been sent! We\'ll get back to you as soon as possible.';
+            document.getElementById('successModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('show');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Star Rating Input
+        const starButtons = document.querySelectorAll('#starRating .star-btn');
+        let selectedRating = 0;
+
+        starButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                selectedRating = parseInt(this.dataset.star);
+                starButtons.forEach(s => {
+                    s.classList.toggle('active', parseInt(s.dataset.star) <= selectedRating);
+                });
+            });
+
+            btn.addEventListener('mouseenter', function() {
+                const hoverVal = parseInt(this.dataset.star);
+                starButtons.forEach(s => {
+                    s.classList.toggle('active', parseInt(s.dataset.star) <= hoverVal);
+                });
+            });
+
+            btn.addEventListener('mouseleave', function() {
+                starButtons.forEach(s => {
+                    s.classList.toggle('active', parseInt(s.dataset.star) <= selectedRating);
+                });
+            });
+        });
+
+        function submitReview(e) {
+            e.preventDefault();
+            if (selectedRating === 0) {
+                alert('Please select a star rating.');
+                return;
+            }
+            document.getElementById('modalMessage').textContent = 'Thank you for your review! We truly appreciate your feedback.';
+            document.getElementById('successModal').classList.add('show');
+            e.target.reset();
+            selectedRating = 0;
+            starButtons.forEach(s => s.classList.remove('active'));
+        }
+
+        // Auto-scroll the review ticker slowly
+        const ticker = document.getElementById('reviewTicker');
+        if (ticker) {
+            let scrollDirection = 1;
+            let scrollPaused = false;
+
+            ticker.addEventListener('mouseenter', () => scrollPaused = true);
+            ticker.addEventListener('mouseleave', () => scrollPaused = false);
+
+            setInterval(() => {
+                if (scrollPaused) return;
+                ticker.scrollLeft += 1 * scrollDirection;
+                if (ticker.scrollLeft >= ticker.scrollWidth - ticker.clientWidth) {
+                    scrollDirection = -1;
+                } else if (ticker.scrollLeft <= 0) {
+                    scrollDirection = 1;
+                }
+            }, 20);
+        }
+    </script>
+</body>
+</html>
