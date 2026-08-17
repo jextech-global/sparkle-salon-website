@@ -1403,6 +1403,192 @@
         .privacy-content ul li {
             margin-bottom: 0.5rem;
         }
+
+        /* ===== SHOP PAGE ===== */
+        .shop-hero {
+            padding: 6rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .shop-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .shop-hero p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .shop-filters {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 0 2rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: var(--bg-white);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-medium);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .shop-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-img {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(184,134,11,0.06) 0%, rgba(184,134,11,0.02) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-bestseller {
+            background: var(--primary);
+            color: white;
+        }
+
+        .badge-new {
+            background: #2d8a4e;
+            color: white;
+        }
+
+        .badge-sale {
+            background: #c0392b;
+            color: white;
+        }
+
+        .product-info {
+            padding: 1.25rem;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        .product-desc {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .product-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .product-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .product-price .old-price {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-left: 6px;
+        }
+
+        .btn-add {
+            padding: 8px 18px;
+            border-radius: 50px;
+            border: none;
+            background: var(--gold-gradient);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-add:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(184,134,11,0.3);
+        }
+
+        .shop-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 <body>
@@ -1418,6 +1604,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a onclick="showPage('home')" class="active" data-page="home">Home</a></li>
                 <li><a onclick="showPage('about')" data-page="about">About</a></li>
+                <li><a onclick="showPage('shop')" data-page="shop">Shop</a></li>
                 <li><a onclick="showPage('reviews')" data-page="reviews">Leave a Review</a></li>
                 <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
                 <li><a onclick="showPage('booking')" data-page="booking" class="nav-cta">Book Now</a></li>
@@ -1970,6 +2157,340 @@
         </div>
     </div>
 
+    <!-- SHOP PAGE -->
+    <div class="page" id="page-shop">
+        <section class="shop-hero">
+            <h1>Shop Our Products</h1>
+            <div class="section-divider"></div>
+            <p>Professional-grade products we use and love — available for you to take home.</p>
+        </section>
+
+        <div class="shop-filters">
+            <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+            <button class="filter-btn" onclick="filterProducts('hair')">Hair</button>
+            <button class="filter-btn" onclick="filterProducts('nails')">Nails</button>
+            <button class="filter-btn" onclick="filterProducts('skin')">Skin & Body</button>
+            <button class="filter-btn" onclick="filterProducts('lashes')">Lashes & Brows</button>
+        </div>
+
+        <div class="shop-grid" id="shopGrid">
+
+            <!-- HAIR PRODUCTS -->
+            <div class="product-card" data-category="hair">
+                <div class="product-img">
+                    💇‍♀️
+                    <span class="product-badge badge-bestseller">Best Seller</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Hair</div>
+                    <div class="product-name">Keratin Smoothing Treatment</div>
+                    <div class="product-desc">Long-lasting frizz control and silky smooth hair for up to 3 months.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$45.00</div>
+                        <button class="btn-add" onclick="addToCart('Keratin Smoothing Treatment')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="hair">
+                <div class="product-img">
+                    🧴
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Hair</div>
+                    <div class="product-name">Color Protection Shampoo</div>
+                    <div class="product-desc">Sulfate-free formula that keeps your color vibrant longer.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$24.00</div>
+                        <button class="btn-add" onclick="addToCart('Color Protection Shampoo')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="hair">
+                <div class="product-img">
+                    ✨
+                    <span class="product-badge badge-new">New</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Hair</div>
+                    <div class="product-name">Argan Oil Leave-In Serum</div>
+                    <div class="product-desc">Lightweight serum that adds shine, tames flyaways, and protects from heat.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$28.00</div>
+                        <button class="btn-add" onclick="addToCart('Argan Oil Leave-In Serum')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="hair">
+                <div class="product-img">
+                    🌿
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Hair</div>
+                    <div class="product-name">Volumizing Sea Salt Spray</div>
+                    <div class="product-desc">Effortless beachy texture and volume for all hair types.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$22.00</div>
+                        <button class="btn-add" onclick="addToCart('Volumizing Sea Salt Spray')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="hair">
+                <div class="product-img">
+                    💎
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Hair</div>
+                    <div class="product-name">Deep Repair Hair Mask</div>
+                    <div class="product-desc">Intensive conditioning treatment for damaged, dry, or color-treated hair.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$32.00</div>
+                        <button class="btn-add" onclick="addToCart('Deep Repair Hair Mask')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NAIL PRODUCTS -->
+            <div class="product-card" data-category="nails">
+                <div class="product-img">
+                    💅
+                    <span class="product-badge badge-bestseller">Best Seller</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Nails</div>
+                    <div class="product-name">Gel Polish Kit — Classic Collection</div>
+                    <div class="product-desc">12-piece gel polish set with base coat, top coat, and 10 signature colors.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$58.00</div>
+                        <button class="btn-add" onclick="addToCart('Gel Polish Kit')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="nails">
+                <div class="product-img">
+                    🌸
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Nails</div>
+                    <div class="product-name">Cuticle Oil — Lavender</div>
+                    <div class="product-desc">Nourishing oil that hydrates cuticles and promotes healthy nail growth.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$12.00</div>
+                        <button class="btn-add" onclick="addToCart('Cuticle Oil — Lavender')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="nails">
+                <div class="product-img">
+                    💫
+                    <span class="product-badge badge-new">New</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Nails</div>
+                    <div class="product-name">Strengthening Nail Hardener</div>
+                    <div class="product-desc">Clinical-strength formula that repairs weak, brittle, and peeling nails.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$16.00</div>
+                        <button class="btn-add" onclick="addToCart('Strengthening Nail Hardener')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="nails">
+                <div class="product-img">
+                    🎨
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Nails</div>
+                    <div class="product-name">Nail Art Glitter Set</div>
+                    <div class="product-desc">24-color glitter and chrome powder set for stunning nail art designs.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$26.00</div>
+                        <button class="btn-add" onclick="addToCart('Nail Art Glitter Set')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="nails">
+                <div class="product-img">
+                    🧤
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Nails</div>
+                    <div class="product-name">Acrylic Dip Powder System</div>
+                    <div class="product-desc">Professional dip powder kit for salon-quality manicures at home.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$42.00 <span class="old-price">$55.00</span></div>
+                        <button class="btn-add" onclick="addToCart('Acrylic Dip Powder System')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SKIN & BODY PRODUCTS -->
+            <div class="product-card" data-category="skin">
+                <div class="product-img">
+                    🧖‍♀️
+                    <span class="product-badge badge-bestseller">Best Seller</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Skin & Body</div>
+                    <div class="product-name">Hempz Body Wash</div>
+                    <div class="product-desc">The same body wash our clients rave about! Moisturizing hemp seed oil formula.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$18.00</div>
+                        <button class="btn-add" onclick="addToCart('Hempz Body Wash')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="skin">
+                <div class="product-img">
+                    🌺
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Skin & Body</div>
+                    <div class="product-name">Exfoliating Sugar Scrub</div>
+                    <div class="product-desc">Invigorating body scrub with natural sugars and essential oils for silky smooth skin.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$20.00</div>
+                        <button class="btn-add" onclick="addToCart('Exfoliating Sugar Scrub')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="skin">
+                <div class="product-img">
+                    🌞
+                    <span class="product-badge badge-new">New</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Skin & Body</div>
+                    <div class="product-name">SPF 50 Daily Moisturizer</div>
+                    <div class="product-desc">Lightweight, non-greasy daily moisturizer with broad-spectrum sun protection.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$28.00</div>
+                        <button class="btn-add" onclick="addToCart('SPF 50 Daily Moisturizer')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="skin">
+                <div class="product-img">
+                    🫧
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Skin & Body</div>
+                    <div class="product-name">Hydrating Facial Serum</div>
+                    <div class="product-desc">Hyaluronic acid serum that plumps, hydrates, and reduces fine lines.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$34.00</div>
+                        <button class="btn-add" onclick="addToCart('Hydrating Facial Serum')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="skin">
+                <div class="product-img">
+                    🧼
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Skin & Body</div>
+                    <div class="product-name">Wax Aftercare Balm</div>
+                    <div class="product-desc">Soothing balm that calms irritation and keeps skin smooth after waxing.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$14.00</div>
+                        <button class="btn-add" onclick="addToCart('Wax Aftercare Balm')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LASHES & BROWS -->
+            <div class="product-card" data-category="lashes">
+                <div class="product-img">
+                    👁️
+                    <span class="product-badge badge-bestseller">Best Seller</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Lashes & Brows</div>
+                    <div class="product-name">Lash Growth Serum</div>
+                    <div class="product-desc">Clinically proven peptide serum that promotes longer, fuller lashes in 6 weeks.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$38.00</div>
+                        <button class="btn-add" onclick="addToCart('Lash Growth Serum')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="lashes">
+                <div class="product-img">
+                    ✨
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Lashes & Brows</div>
+                    <div class="product-name">Tinted Brow Gel</div>
+                    <div class="product-desc">Waterproof, fiber-infused gel that shapes, fills, and tames brows all day.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$18.00</div>
+                        <button class="btn-add" onclick="addToCart('Tinted Brow Gel')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="lashes">
+                <div class="product-img">
+                    💕
+                    <span class="product-badge badge-sale">Sale</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Lashes & Brows</div>
+                    <div class="product-name">Premium Strip Lashes — Natural</div>
+                    <div class="product-desc">Hand-crafted mink lashes for a natural, everyday look. Reusable up to 20 wears.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$12.00 <span class="old-price">$20.00</span></div>
+                        <button class="btn-add" onclick="addToCart('Premium Strip Lashes — Natural')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="lashes">
+                <div class="product-img">
+                    👁️‍🗨️
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Lashes & Brows</div>
+                    <div class="product-name">Brow Lamination Kit</div>
+                    <div class="product-desc">Professional at-home kit for fluffy, feathered brows that last 6-8 weeks.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$30.00</div>
+                        <button class="btn-add" onclick="addToCart('Brow Lamination Kit')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="lashes">
+                <div class="product-img">
+                    🖊️
+                    <span class="product-badge badge-new">New</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Lashes & Brows</div>
+                    <div class="product-name">Microblade Brow Pen</div>
+                    <div class="product-desc">Precision tip pen that mimics hair strokes for natural-looking, defined brows.</div>
+                    <div class="product-bottom">
+                        <div class="product-price">$15.00</div>
+                        <button class="btn-add" onclick="addToCart('Microblade Brow Pen')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-inner">
@@ -1982,6 +2503,7 @@
                 <ul class="footer-links">
                     <li><a onclick="showPage('home')">Home</a></li>
                     <li><a onclick="showPage('about')">About Us</a></li>
+                    <li><a onclick="showPage('shop')">Shop</a></li>
                     <li><a onclick="showPage('reviews')">Leave a Review</a></li>
                     <li><a onclick="showPage('booking')">Book Appointment</a></li>
                     <li><a onclick="showPage('contact')">Contact</a></li>
@@ -2117,6 +2639,26 @@
                     scrollDirection = 1;
                 }
             }, 20);
+        }
+
+        // Shop product filter
+        function filterProducts(category) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.product-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Add to cart demo
+        function addToCart(productName) {
+            document.getElementById('modalMessage').textContent = productName + ' has been added to your cart! (This is a demo — in a live store, this would open your cart.)';
+            document.getElementById('successModal').classList.add('show');
         }
     </script>
 </body>
